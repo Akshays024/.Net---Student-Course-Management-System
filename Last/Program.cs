@@ -13,6 +13,7 @@ studentManager.AddStudent(studet2);
 studentManager.UpdateStudent(1,"ANANYA",15,"C1");
 studentManager.DeleteStudent(2);
 studentManager.ListStudents();
+studentManager.FilterStudentsByAge(18);
 
 
 class Student
@@ -68,6 +69,28 @@ class StudentManager
             students.Remove(DeleteStudent);
         }
     }
+    public void FilterStudentsByAge(int Age)
+    {
+        var FilteredByAge = students.Where(studnet => studnet.Age > Age);
+        foreach(var student in FilteredByAge)
+        {
+            Console.WriteLine(student.ID);
+            Console.WriteLine(student.Name);
+            Console.WriteLine(student.Age);
+            Console.WriteLine(student.CourseID);
+
+        }
+    }
+    public void GetStudentsByCource(string CourceID)
+    {
+        var getStudentBYCource = students.Where(student => student.CourseID == CourceID);
+        foreach(var student in getStudentBYCource)
+        {
+            Console.WriteLine(student.ID);
+            Console.WriteLine(student.Name);
+            Console.WriteLine(student.CourseID);
+        }
+    }
 }
 
 class CourseManager
@@ -85,6 +108,7 @@ class CourseManager
             Console.WriteLine(cource.CourseName);
         }
     }
+    
 }
 class Course
 {
